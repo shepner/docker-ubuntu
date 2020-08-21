@@ -13,6 +13,9 @@ chmod 754 ~/update.sh
 # Set the timezone
 sudo timedatectl set-timezone America/Chicago
 
+# QEMU agent
+sudo apt-get update
+apt-get install -y qemu-guest-agent
 
 # Install net-tools
 sudo apt-get update
