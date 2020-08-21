@@ -13,19 +13,25 @@ VMID=200
 qm create $VMID -ide0 local-lvm:4 -net0 bridge=vmbr0 -cdrom nas-data1-iso:iso/ubuntu-20.04.1-live-server-amd64.iso
 qm set $VMID --name: d01
 qm set $VMID --ostype: l26
-
+# CPU
 qm set $VMID --sockets: 1
 qm set $VMID --cores: 24
 qm set $VMID --numa: 0
-
+# RAM
 qm set $VMID --memory: 102400
-
+# Disk
 qm set $VMID --scsihw: virtio-scsi-pci
 qm set $VMID --scsi0: nas-data2-vm:100/vm-$VMID-disk-0.qcow2,discard=on,size=256G,ssd=1
 qm set $VMID --bootdisk: scsi0
-
+# Other
 qm set $VMID --onboot: 1
 qm set $VMID --agent 1
+
+# shrink the resulting image
+# https://pve.proxmox.com/wiki/Shrink_Qcow2_Disk_Files
+mv /mnt/nas/data2/vm/images/$VMID/vm-$VMID-disk-0.qcow2 /mnt/nas/data2/vm/images/$VMID/vm-$VMID-disk-0.qcow2.orig
+qemu-img convert -O qcow2 -c /mnt/nas/data2/vm/images/$VMID/vm-$VMID-disk-0.qcow2.orig /mnt/nas/data2/vm/images/$VMID/vm-$VMID-disk-0.qcow2
+rm /mnt/nas/data2/vm/images/$VMID/vm-$VMID-disk-0.qcow2.orig
 ```
 
 install Ubuntu 20.04 the usual way.
