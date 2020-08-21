@@ -14,6 +14,7 @@ chmod 754 ~/update.sh
 sudo timedatectl set-timezone America/Chicago
 
 # QEMU agent
+# https://pve.proxmox.com/wiki/Qemu-guest-agent
 sudo apt-get update
 apt-get install -y qemu-guest-agent
 
