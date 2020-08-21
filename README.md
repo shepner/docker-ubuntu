@@ -40,6 +40,22 @@ provide a static IP address
 
 install OpenSSH
 
+## Fix the UID
+
+First set the permissions of the home dir:
+
+``` shell
+sudo chown -R 1001 /home/`id -un`
+```
+
+Then change the UID accodingly in the passwd files:
+
+``` shell
+sudo vipw
+```
+
+Finally, logout and back in again
+
 ## Setup ssh keys
 
 Do this from the local workstation:
