@@ -18,3 +18,6 @@ scp ~/.ssh/shepner_rsa.pub $DHOST:.ssh/shepner_rsa.pub
 scp ~/.ssh/config $DHOST:.ssh/config
 ssh $DHOST "chmod -R 700 ~/.ssh"
 ```
+
+
+
