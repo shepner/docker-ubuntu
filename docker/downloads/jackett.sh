@@ -7,7 +7,7 @@ BASEDIR=/mnt/nas/data2/docker/$NAME
 sudo -u docker mkdir -p $BASEDIR/config
 sudo -u docker mkdir -p $BASEDIR/downloads
 
-sudo docker service create \
+sudo docker run --detach \
   --name $NAME \
   --env PUID=1003 \
   --env PGID=1000 \
