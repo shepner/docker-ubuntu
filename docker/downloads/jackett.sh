@@ -2,7 +2,7 @@
 # https://docs.linuxserver.io/images/docker-jackett
 
 NAME=jackett
-BASEDIR=/mnt/nas/data1/docker/$NAME
+BASEDIR=/mnt/nas/data2/docker/$NAME
 
 sudo -u docker mkdir -p $BASEDIR/config
 sudo -u docker mkdir -p $BASEDIR/downloads
