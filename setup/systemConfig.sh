@@ -1,11 +1,16 @@
 #!/bin/sh
 
+# simple script for updating the scripts from github
+cat > ~/update-scripts.sh << EOF
+cd ~/docker-ubuntu
+git pull
+EOF
+chmod 754 ~/update-scripts.sh
 
 # Patch the system
 cat > ~/update.sh << EOF
 sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt -y autoremove
 EOF
-
 chmod 754 ~/update.sh
 ~/update.sh
 
