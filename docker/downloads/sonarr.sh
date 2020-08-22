@@ -8,7 +8,7 @@ sudo -u docker mkdir -p $BASEDIR/config
 #sudo -u docker mkdir -p $BASEDIR/tv
 #sudo -u docker mkdir -p $BASEDIR/downloads
 
-sudo docker service create \
+sudo docker run --detach \
   --name $NAME \
   --env PUID=1003 \
   --env PGID=1000 \
