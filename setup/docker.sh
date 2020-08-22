@@ -6,6 +6,12 @@ sudo adduser --home /home/docker --uid 1003 --gid 1000 --shell /bin/bash docker
 
 sudo gpasswd -a docker sudo
 
+# setup a working dir
+
+sudo mkdir -p /docker
+sudo chown -R docker:asyla /docker
+sudo chmod -R 774 /docker
+
 # Install Docker Engine on Ubuntu:
 
 # Update the apt package index and install packages to allow apt to use a repository over HTTPS:
