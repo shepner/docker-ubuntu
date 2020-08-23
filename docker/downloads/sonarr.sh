@@ -3,7 +3,7 @@
 
 NAME=sonarr
 IMAGE=linuxserver/sonarr
-BASEDIR=/mnt/nas/data1/docker/$NAME
+BASEDIR=/docker/$NAME
 
 sudo -u docker mkdir -p $BASEDIR/config
 #sudo -u docker mkdir -p $BASEDIR/tv
