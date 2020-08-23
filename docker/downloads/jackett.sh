@@ -9,6 +9,8 @@ sudo -u docker mkdir -p $BASEDIR/downloads
 
 sudo docker run --detach \
   --name $NAME \
+  --cpus=2 \
+  --cpu-shares=1024 \
   --env PUID=1003 \
   --env PGID=1000 \
   --env TZ="America/Chicago" \
@@ -18,3 +20,4 @@ sudo docker run --detach \
   --mount type=bind,src=$BASEDIR/downloads,dst=/downloads \
   linuxserver/jackett
   
+  # --cpu-shares=1024 # default job priority
