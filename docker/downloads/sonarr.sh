@@ -10,6 +10,8 @@ sudo -u docker mkdir -p $BASEDIR/config
 
 sudo docker run --detach \
   --name $NAME \
+  --cpus=2 \
+  --cpu-shares=1024 \
   --env PUID=1003 \
   --env PGID=1000 \
   --env TZ="America/Chicago" \
@@ -21,3 +23,4 @@ sudo docker run --detach \
   --mount type=bind,src=/mnt/nas/data1/docker/transmission/downloads/complete,dst=/downloads \
   linuxserver/sonarr
   
+  # --cpu-shares=1024 # default job priority
