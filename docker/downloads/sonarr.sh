@@ -2,11 +2,16 @@
 # https://docs.linuxserver.io/images/docker-sonarr
 
 NAME=sonarr
+IMAGE=linuxserver/sonarr
 BASEDIR=/mnt/nas/data1/docker/$NAME
 
 sudo -u docker mkdir -p $BASEDIR/config
 #sudo -u docker mkdir -p $BASEDIR/tv
 #sudo -u docker mkdir -p $BASEDIR/downloads
+
+sudo docker pull $IMAGE
+sudo docker stop $NAME
+sudo docker rm -v $NAME
 
 sudo docker run --detach \
   --name $NAME \
@@ -21,6 +26,6 @@ sudo docker run --detach \
   --mount type=bind,src=$BASEDIR/config,dst=/config \
   --mount type=bind,src=/mnt/nas/data1/media/Videos,dst=/tv \
   --mount type=bind,src=/mnt/nas/data1/docker/transmission/downloads/complete,dst=/downloads \
-  linuxserver/sonarr
+  $IMAGE
   
   # --cpu-shares=1024 # default job priority
