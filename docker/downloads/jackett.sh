@@ -15,7 +15,7 @@ sudo docker rm -v $NAME
 sudo docker run --detach \
   --name $NAME \
   --cpus=2 \
-  --cpu-shares=1024 \
+  --cpu-shares=768 \
   --env PUID=1003 \
   --env PGID=1000 \
   --env TZ="America/Chicago" \
