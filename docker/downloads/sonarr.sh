@@ -13,7 +13,7 @@ sudo docker pull $IMAGE
 sudo docker stop $NAME
 sudo docker rm -v $NAME
 
-sudo docker run --detach \
+sudo docker run --detach --restart=always \
   --name $NAME \
   --cpus=2 \
   --cpu-shares=768 \
