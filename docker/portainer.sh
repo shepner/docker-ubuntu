@@ -1,6 +1,7 @@
 #!/bin/sh
 # Portainer
 # https://www.portainer.io
+# https://www.portainer.io/installation/
 
 # Portainer server
 
