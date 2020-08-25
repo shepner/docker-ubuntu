@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # CIFS support ([article](https://wiki.ubuntu.com/MountWindowsSharesPermanently))
+# Use this for anything that has SMB enabled to avoid permission issues in certain situations
 
 sudo apt update
 sudo apt install -y cifs-utils
