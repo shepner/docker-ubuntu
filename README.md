@@ -7,25 +7,22 @@ VM setup in Proxmox:
 [10.12. Managing Virtual Machines with qm](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_managing_virtual_machines_with_span_class_monospaced_qm_span)
 
 ``` shell
-# this is just a placeholder
+# Create the VM
 
-VMID=200
-qm create $VMID -ide0 local-lvm:4 -net0 bridge=vmbr0 -cdrom nas-data1-iso:iso/ubuntu-20.04.1-live-server-amd64.iso
-qm set $VMID --name: d01
-qm set $VMID --ostype: l26
-# CPU
-qm set $VMID --sockets: 1
-qm set $VMID --cores: 24
-qm set $VMID --numa: 0
-# RAM
-qm set $VMID --memory: 102400
-# Disk
-qm set $VMID --scsihw: virtio-scsi-pci
-qm set $VMID --scsi0: nas-data2-vm:100/vm-$VMID-disk-0.qcow2,discard=on,size=256G,ssd=1
-qm set $VMID --bootdisk: scsi0
-# Other
-qm set $VMID --onboot: 1
-qm set $VMID --agent 1
+VMID=100
+qm create $VMID \
+  --name d01 \
+  --sockets 1 \
+  --cores 20 \
+  --ostype l26 \
+  --memory 1024000 \
+  --ide2 nas-data1-iso:iso/ubuntu-20.04.1-live-server-amd64.iso,media=cdrom \
+  --scsi0 nas-data1-vm:$VMID/vm-$VMID-disk-0.qcow2,discard=on,size=256G,ssd=1 \
+  --scsihw virtio-scsi-pci \
+  --bootdisk scsi0 \
+  --net0 virtio,bridge=vmbr0,firewall=1 \
+  --onboot 1 \
+  --numa 0
 
 # shrink the resulting image
 # https://pve.proxmox.com/wiki/Shrink_Qcow2_Disk_Files
