@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# simple script for updating the scripts from github
+# simple script for updating from github
 cat > ~/update-scripts.sh << EOF
 cd ~/docker-ubuntu
 git pull
