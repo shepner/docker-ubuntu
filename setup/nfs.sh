@@ -12,7 +12,4 @@ echo "nas:/mnt/data1/docker /mnt/nas/data1/docker nfs rw 0 0" | sudo tee --appen
 sudo mkdir -p /mnt/nas/data2/docker
 echo "nas:/mnt/data2/docker /mnt/nas/data2/docker nfs rw 0 0" | sudo tee --append /etc/fstab
 
-#sudo mkdir -p /mnt/nas/data1/media
-#echo "nas:/mnt/data1/media /mnt/nas/data1/media nfs rw 0 0" | sudo tee --append /etc/fstab
-
 sudo mount -a
