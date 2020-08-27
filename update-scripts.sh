@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPO=shepner/proxmox-plex
+REPO=shepner/proxmox-docker
 
 if [ -d ~/scripts ]; then
   sudo rm -R ~/scripts
