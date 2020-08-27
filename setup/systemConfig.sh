@@ -17,18 +17,3 @@ sudo apt-get install -y net-tools
 sudo apt update
 sudo apt install -y smartmontools
 #systemctl status smartd
-
-# Disable the local dns listener (might require a reboot)
-##sudo netstat -tulnp | grep 53
-#echo 'DNSStubListener=no' | sudo tee --append /etc/systemd/resolved.conf
-#sudo systemctl daemon-reload
-#sudo systemctl restart systemd-resolved.service
-##sudo netstat -tulnp | grep 53
-#
-#sudo rm /etc/resolv.conf
-#sudo sh -c 'cat > /etc/resolv.conf << EOF
-#search asyla.org
-#nameserver 10.0.0.71
-#nameserver 208.67.222.222
-#nameserver 208.67.220.220
-#EOF'
