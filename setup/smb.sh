@@ -7,14 +7,15 @@ sudo apt update
 sudo apt install -y cifs-utils
 
 sh -c 'cat > ~/.smbcredentials << EOF
-username=docker
-password=mspassword
+username=
+password=
 domain=
 EOF'
 chmod 600 ~/.smbcredentials
-echo "Run 'vi ~/.smbcredentials' and edit the password"
 
 sudo mkdir -p /mnt/nas/data1/media
-echo "//nas/media /mnt/nas/data1/media cifs rw,uid=docker,gid=asyla,credentials=/home/`id -un`/.smbcredentials 0 0" | sudo tee --append /etc/fstab
+echo "//nas/media /mnt/nas/data1/media cifs rw,uid=1003,gid=1000,credentials=/home/`id -un`/.smbcredentials 0 0" | sudo tee --append /etc/fstab
 
-sudo mount -a
+echo "########################################################"
+echo "Run 'vi ~/.smbcredentials' and edit the user ID/password"
+echo "########################################################"
