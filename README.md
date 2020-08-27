@@ -51,7 +51,7 @@ ssh $DHOST "chmod -R 700 ~/.ssh"
 ## Configure the system
 
 ``` shell
-bash <(curl -s https://raw.githubusercontent.com/shepner/portainer-docker/master/update-scripts.sh)
+bash <(curl -s https://raw.githubusercontent.com/shepner/proxmox-docker/master/update-scripts.sh)
 
 ~/update.sh
 
