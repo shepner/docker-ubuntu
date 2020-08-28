@@ -13,7 +13,7 @@ sudo docker rm -v $NAME
 
 sudo docker run --detach --restart=always \
   --name $NAME \
-  --cpus=18 \
+  --cpus=8 \
   --cpu-shares=256 \
   --env PUID=1003 \
   --env PGID=1000 \
