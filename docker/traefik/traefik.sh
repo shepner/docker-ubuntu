@@ -4,7 +4,7 @@
 #sudo docker-compose up -d reverse-proxy
 
 NAME=traefik
-IMAGE=traefik:v2.3
+IMAGE=traefik:v2.2
 CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
 
 sudo -u docker mkdir -p $CONFIGDIR
