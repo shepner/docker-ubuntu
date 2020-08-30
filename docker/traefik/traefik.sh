@@ -4,13 +4,22 @@
 #sudo docker-compose up -d reverse-proxy
 
 NAME=traefik
-IMAGE=traefik:v2.2
+IMAGE=traefik:v2.3
 CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
 
 sudo -u docker mkdir -p $CONFIGDIR
 
-sudo sh -c 'cat > $CONFIGDIR/traefik.toml << EOF
+sudo sh -c 'cat > $CONFIGDIR/traefik.yml << EOF
+## traefik.yml
 
+# Docker configuration backend
+providers:
+  docker:
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)"
+
+# API and dashboard configuration
+api:
+  insecure: true
 EOF'
 
 sudo docker pull $IMAGE
@@ -25,7 +34,7 @@ sudo docker run --detach --restart=always \
   --env PGID=1000 \
   --publish published=80,target=80,protocol=tcp,mode=ingress \
   --publish published=8080,target=8080,protocol=tcp,mode=ingress \
-  --mount type=bind,src=$CONFIGDIR/traefik.toml,dst=/etc/traefik/traefik.toml \
+  --mount type=bind,src=$CONFIGDIR/traefik.yml,dst=/etc/traefik/traefik.yml \
   $IMAGE
   
   # --cpu-shares=1024 # default job priority
