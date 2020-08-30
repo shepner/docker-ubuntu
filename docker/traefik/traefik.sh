@@ -9,18 +9,7 @@ CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
 
 sudo -u docker mkdir -p $CONFIGDIR
 
-sudo sh -c 'cat > $CONFIGDIR/traefik.yml << EOF
-## traefik.yml
-
-# Docker configuration backend
-providers:
-  docker:
-    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)"
-
-# API and dashboard configuration
-api:
-  insecure: true
-EOF'
+wget -O $CONFIGDIR/traefik.yml https://raw.githubusercontent.com/shepner/proxmox-docker/master/docker/traefik/traefik.yml
 
 sudo docker pull $IMAGE
 sudo docker stop $NAME
