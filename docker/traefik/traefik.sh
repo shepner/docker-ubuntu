@@ -9,6 +9,10 @@ CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
 
 sudo -u docker mkdir -p $CONFIGDIR
 
+sudo sh -c 'cat > $CONFIGDIR/traefik.toml << EOF
+
+EOF'
+
 sudo docker pull $IMAGE
 sudo docker stop $NAME
 sudo docker rm -v $NAME
