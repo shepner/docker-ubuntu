@@ -5,6 +5,9 @@
 sudo docker network create traefik_net
 #sudo docker network inspect traefik_net
 
+# This will show the docker-compose.yml file with the vars filled in
+#sudo docker-compose config
+
 SERVICE=traefik
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml pull $SERVICE
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml stop $SERVICE
