@@ -20,7 +20,7 @@ services:
 
   whoami:
     image: "containous/whoami"
-    container_name: "simple-service"
+    container_name: "whoami"
     labels:
       - "traefik.enable=true"
       #- "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
