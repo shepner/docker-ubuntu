@@ -11,17 +11,15 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # So that Traefik can listen to the Docker events
       - "${CONFIGDIR}/traefik.yml:/traefik.yml:ro"
-      
-  
-  services:
-    whoami:
-      image: "containous/whoami"
-      container_name: "whoami"
-      hostname: "whoami"
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.whoami.entrypoints=web"
-        - "traefik.http.routers.whoami.rule=Host(`whoami.${MY_DOMAIN}`)"
+
+  whoami:
+    image: "containous/whoami"
+    container_name: "whoami"
+    hostname: "whoami"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.${MY_DOMAIN}`)"
 
 
 networks:
