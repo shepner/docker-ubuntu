@@ -1,21 +1,31 @@
 #!/bin/sh
+# [Traefik v2](https://github.com/DoTheEvo/Traefik-v2-examples#1-traefik-routing-to-various-docker-containers) examples
 
-#cd ~/scripts/docker/traefik
-#sudo docker-compose up -d reverse-proxy
+
+sudo docker network create traefik_net
+#sudo docker network inspect traefik_net
 
 SERVICE=traefik
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml pull $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml stop $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml rm $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml up -d  $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml pull $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml stop $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml rm $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml up -d $SERVICE
 
 SERVICE=whoami
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml pull $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml stop $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml rm $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml up -d  $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml pull $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml stop $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml rm $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml up -d $SERVICE
+
+SERVICE=portainer
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml pull $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml stop $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml rm $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml up -d $SERVICE
 
 
+# To stop all containers
+#docker stop $(docker ps -q)
 
 #NAME=traefik
 #IMAGE=traefik:v2.2
