@@ -5,7 +5,7 @@
 
 NAME=traefik
 #IMAGE=traefik:v2.2
-SERVICE=traefik
+SERVICE=reverse_proxy
 CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
 
 sudo -u docker mkdir -p $CONFIGDIR
