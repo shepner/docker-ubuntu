@@ -11,6 +11,9 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # So that Traefik can listen to the Docker events
       - "${CONFIGDIR}/traefik.yml:/traefik.yml:ro"
+    command:
+      # Traefik will listen to incoming request on the port 80 (HTTP)
+      - "--entrypoints.web.address=:80"
 
   whoami:
     image: "containous/whoami"
