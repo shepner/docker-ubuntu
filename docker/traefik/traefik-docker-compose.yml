@@ -10,9 +10,9 @@ services:
       - "8080:8080" # The dashboard is here
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # So that Traefik can listen to the Docker events
-      - "$CONFIGDIR/traefik.yml:/traefik.yml:ro"
+      - "${CONFIGDIR}/traefik.yml:/traefik.yml:ro"
 
 networks:
   default:
     external:
-      name: $DEFAULT_NETWORK
+      name: ${DEFAULT_NETWORK}
