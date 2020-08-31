@@ -10,13 +10,12 @@ services:
       - "8080:8080" # The dashboard is here
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # So that Traefik can listen to the Docker events
-      #- "${CONFIGDIR}/traefik.yml:/traefik.yml:ro"
-    command:
-      # Traefik will listen to incoming request on the port 80 (HTTP)
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
+      - "${CONFIGDIR}/traefik.yml:/traefik.yml:ro"
+    #command:
+      #- "--api.insecure=true"
+      #- "--providers.docker=true"
+      #- "--providers.docker.exposedbydefault=false"
+      #- "--entrypoints.web.address=:80" # Traefik will listen to incoming request on the port 80 (HTTP)
 
   whoami:
     image: "containous/whoami"
