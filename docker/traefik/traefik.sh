@@ -3,19 +3,25 @@
 #cd ~/scripts/docker/traefik
 #sudo docker-compose up -d reverse-proxy
 
-NAME=traefik
-#IMAGE=traefik:v2.2
-SERVICE=reverse_proxy
-CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
-
-sudo -u docker mkdir -p $CONFIGDIR
-
+SERVICE=traefik
 sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml pull $SERVICE
 sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml stop $SERVICE
 sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml rm $SERVICE
-
 sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml up -d  $SERVICE
 
+SERVICE=whoami
+sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml pull $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml stop $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml rm $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/docker-compose.yml up -d  $SERVICE
+
+
+
+#NAME=traefik
+#IMAGE=traefik:v2.2
+#CONFIGDIR=/mnt/nas/data2/docker/$NAME/config
+
+#sudo -u docker mkdir -p $CONFIGDIR
 
 #wget -O $CONFIGDIR/traefik.yml https://raw.githubusercontent.com/shepner/proxmox-docker/master/docker/traefik/traefik.yml
 
