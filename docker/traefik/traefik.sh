@@ -14,9 +14,9 @@ sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --en
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env up -d $SERVICE
 
 SERVICE=whoami
-sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env rm --force --stop $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env up -d $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/traefik-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/traefik-docker-compose.yml --env-file ~/scripts/docker/traefik/.env rm --force --stop $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/traefik-docker-compose.yml --env-file ~/scripts/docker/traefik/.env up -d $SERVICE
 
 SERVICE=portainer
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
