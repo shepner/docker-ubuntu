@@ -12,20 +12,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # So that Traefik can listen to the Docker events
       - "${CONFIGDIR}/traefik.yml:/traefik.yml:ro"
     #command:
-      #- "--api.insecure=true"
-      #- "--providers.docker=true"
-      #- "--providers.docker.exposedbydefault=false"
-      #- "--entrypoints.web.address=:80" # Traefik will listen to incoming request on the port 80 (HTTP)
-
-  whoami:
-    image: "containous/whoami"
-    container_name: "whoami"
-    hostname: "whoami"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.${MY_DOMAIN}`)"
-
+      # use the `traefik.yml` instead
 
 networks:
   default:
