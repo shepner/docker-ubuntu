@@ -8,15 +8,17 @@ sudo docker network create traefik_net
 # This will show the docker-compose.yml file with the vars filled in
 #sudo docker-compose config
 
+cp ~/scripts/docker/traefik/traefik.yml /mnt/nas/data2/docker/traefik/config/
+
 SERVICE=traefik
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env rm --force --stop $SERVICE
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env up -d $SERVICE
 
 SERVICE=whoami
-sudo docker-compose -f ~/scripts/docker/traefik/traefik-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/traefik-docker-compose.yml --env-file ~/scripts/docker/traefik/.env rm --force --stop $SERVICE
-sudo docker-compose -f ~/scripts/docker/traefik/traefik-docker-compose.yml --env-file ~/scripts/docker/traefik/.env up -d $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env rm --force --stop $SERVICE
+sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env up -d $SERVICE
 
 SERVICE=portainer
 sudo docker-compose -f ~/scripts/docker/traefik/$SERVICE-docker-compose.yml --env-file ~/scripts/docker/traefik/.env pull $SERVICE
