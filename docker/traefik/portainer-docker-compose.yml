@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8" # https://docs.docker.com/compose/compose-file/
 
 services:
   portainer:
@@ -12,6 +12,13 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.entrypoints=web"
       - "traefik.http.routers.portainer.rule=Host(`portainer.$MY_DOMAIN`)"
+    # environment: # https://docs.docker.com/compose/environment-variables/
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          cpu_shares: 1024
+
 
 networks:
   default:
