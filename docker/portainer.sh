@@ -23,7 +23,7 @@ sudo docker run --detach --restart=always \
   --volume portainer_data:/data \
   --label traefik.enable=true \
   --label traefik.http.routers.portainer.entrypoints=web \
-  --label traefik.http.routers.portainer.rule=Host(portainer.asyla.org) \
+  --label traefik.http.routers.portainer.rule=Host:portainer.asyla.org \
   $IMAGE
 
 #sudo docker run --detach --restart=always \
